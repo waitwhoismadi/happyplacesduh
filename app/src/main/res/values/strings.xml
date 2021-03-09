@@ -15,4 +15,6 @@
     <string name="image_content_description">image</string>
 
     <string name="btn_text_view_on_map">VIEW ON MAP</string>
+
+    <string name="instText">CLick add button, then fill out all the fields. After you can delete/edit your place in main menu</string>
 </resources>

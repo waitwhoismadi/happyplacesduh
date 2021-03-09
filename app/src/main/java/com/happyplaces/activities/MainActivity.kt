@@ -2,10 +2,16 @@
 package com.happyplaces.activities
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.Window
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,9 +22,13 @@ import com.happyplaces.database.DatabaseHandler
 import com.happyplaces.models.HappyPlaceModel
 import com.happyplaces.utils.SwipeToDeleteCallback
 import kotlinx.android.synthetic.main.activity_main.*
+import org.w3c.dom.Text
 import pl.kitek.rvswipetodelete.SwipeToEditCallback
 
 class MainActivity : AppCompatActivity() {
+
+    internal lateinit var myDialog : Dialog
+    internal lateinit var txt: TextView
 
     /**
      * This function is auto created by Android when the Activity Class is created.
@@ -40,6 +50,33 @@ class MainActivity : AppCompatActivity() {
         getHappyPlacesListFromLocalDB()
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.nav_drawer_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.info -> ShowDialog()//Toast.makeText(this, "Created for Final Project purposes", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun ShowDialog(){
+        myDialog = Dialog(this)
+        myDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        myDialog.setContentView(R.layout.dialog_activity)
+        myDialog.setTitle("INFO")
+
+        txt = myDialog.findViewById<View>(R.id.ok_button) as TextView
+        txt.isEnabled = true
+        txt.setOnClickListener {
+            Toast.makeText(applicationContext, "OVER", Toast.LENGTH_LONG).show()
+            myDialog.cancel()
+        }
+        myDialog.show()
+    }
     // Call Back method  to get the Message form other Activity
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

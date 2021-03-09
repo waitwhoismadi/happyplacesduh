@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/mItem1"
-        android:title="Item 1"/>
+        android:id="@+id/info"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="Info"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/mItem2"
