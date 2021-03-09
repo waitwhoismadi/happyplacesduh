@@ -18,7 +18,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map)
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -38,7 +37,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         var details: HappyPlaceModel = intent.getSerializableExtra(MainActivity.EXTRA_PLACE_DETAILS) as HappyPlaceModel
         val sydney = LatLng(details.latitude, details.longitude)
         mMap.addMarker(MarkerOptions().position(sydney).title(details.title))
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14f))
     }
 }

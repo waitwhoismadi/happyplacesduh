@@ -1,8 +1,12 @@
 package com.happyplaces.activities
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.happyplaces.R
 import com.happyplaces.models.HappyPlaceModel
@@ -18,6 +22,7 @@ class HappyPlaceDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // This is used to align the xml view to this class
         setContentView(R.layout.activity_happy_place_detail)
+
 
         var happyPlaceDetailModel: HappyPlaceModel? = null
 
